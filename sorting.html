@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Visualizer for the Web!</title>
+</head>
+<body>
+    <a href="http://chittle.codes" style="clear: left;">go back to main site</a>
+    <h1>Sorting Visualizer for the Web!</h1>
+    <canvas style="float: left;border: 1px solid black;"></canvas>
+    <div class="menu"> 
+        <input type="number" id="numOfArr" placeholder="number of array elements">
+        <p>slider for speed of animation</p>
+        <input type="range" id="speed" placeholder="speed of each operation">
+        <select name="graphicOption" id="graphicOption">
+            <option value="barchart">barchart</option>
+            <option value="line">line</option>
+            <option value="circleline">circle</option>
+            <option value="colorline">colorline</option>
+        </select>
+        <select name="sort1" id="sort1">
+            <option value="mattSort">mattSort</option>
+            <option value="bogoSort">bogoSort</option>
+            <option value="bubbleSort">bubbleSort</option>
+            <option value="selectionSort">selectionSort</option>
+            <option value="insertionSort">insertionSort</option>
+            <option value="quickSort">quickSort</option>
+        </select>
+        <select name="sort2" id="sort2">
+            <option value="mattSort">mattSort</option>
+            <option value="bogoSort">bogoSort</option>
+            <option value="bubbleSort" selected>bubbleSort</option>
+            <option value="selectionSort">selectionSort</option>
+            <option value="insertionSort">insertionSort</option>
+            <option value="quickSort">quickSort</option>
+        </select>
+        <button id="shuffleArray" style="clear: both;">Shuffle Array!</button>
+        <button id="sortArray">Sort Array!</button>
+    </div>
+    <script type="module" src="canvas.js"></script>
+</body>
+</html>
