@@ -9,7 +9,8 @@ speedInput.onchange = function() {
 }
 
 
-// function that has to be run after every iteration
+// function that has to be run after every iteration in the sorting algorithm
+// ex: in bubble sort, the inner for loop should run this for the best looking visuals
 function iterationUpdate(visuals, i, option, j) {
     init(option.val);
     if (visuals[option.val])
@@ -23,7 +24,10 @@ function iterationUpdate(visuals, i, option, j) {
     return new Promise(resolve => setTimeout(resolve, time));
 }
 
+// Will comment this function for template. Use this as reference for making a new function
 // sorting algorithms
+
+// must be async so it can pause execution on the set interval in iterationUpdates returned promise
 async function mattSort(numArr, visuals, option) {
     for (let i = 0; i < numArr.length;) {
         if (option.val === 'stop') break;
@@ -31,11 +35,21 @@ async function mattSort(numArr, visuals, option) {
             let x = numArr[i];
             numArr[i] = numArr[i + 1];
             numArr[i + 1] = x;
+            // animate just the swaps when array size is large
+            if (numArr.length >= 200){
+                // waits for a returned promise, which is a timeout for the set time variable
+                await iterationUpdate(visuals, i, option);
+            }
             i = -1;
         }
         i++;
-        await iterationUpdate(visuals, i, option);
+        // animate minor details when array is small. Don't do so when array is larger, just animate swaps for performance
+        if (numArr.length < 200){
+            // waits for a returned promise, which is a timeout for the set time variable
+            await iterationUpdate(visuals, i, option);
+        }
     }
+    // return a promise for canvas to use
     return new Promise((resolve, reject) => {resolve()});
 }
 
